@@ -36,7 +36,7 @@ Dosyaları FTP'ye yükledikten sonra anadizine .htaccess isimli dosya oluşturun
 
 admin paneline siteadresi.com/backend şeklinde ulaşabilirsiniz.
 
-admin email : admin@admin.com
-admin şifre : 123456
+- admin email : admin@admin.com
+- admin şifre : 123456
 
 
