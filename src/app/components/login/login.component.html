@@ -1,0 +1,46 @@
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <form [formGroup]="loginForm">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="form-group">
+            <span>Kullanıcı Adı</span>
+            <input
+              class="input"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="kullanıcı adı"
+              formControlName="username">
+          </div>
+          <div class="alert alert-danger"
+               *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').dirty">Lütfen
+            kullanıcı adını giriniz
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="form-group">
+            <span>Şifre</span>
+            <input
+              class="input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="şifre"
+              formControlName="password">
+          </div>
+          <div class="alert alert-danger"
+               *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').dirty">Lütfen
+            şifrenizi giriniz
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button type="submit" [disabled]="loginForm.invalid" (click)="login()" class="btn btn-success">Giriş Yap</button>
+        </div>
+      </div>
+    </form>
+    <!-- /container -->
+  </div>
+</div>

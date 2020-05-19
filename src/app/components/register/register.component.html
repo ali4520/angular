@@ -1,0 +1,95 @@
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <form [formGroup]="registerForm">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="form-group">
+            <span>Ad</span>
+            <input
+              class="input"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Adınız"
+              formControlName="name">
+          </div>
+          <div class="alert alert-danger"
+               *ngIf="registerForm.get('name').hasError('required') && registerForm.get('name').dirty">Lütfen
+            isminizi giriniz
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="form-group">
+            <span>Soyad</span>
+            <input
+              class="input"
+              type="text"
+              name="surname"
+              id="surname"
+              placeholder="Soyadınız"
+              formControlName="surname">
+          </div>
+          <div class="alert alert-danger"
+               *ngIf="registerForm.get('surname').hasError('required') && registerForm.get('surname').dirty">Lütfen
+            soyadınızı giriniz
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="form-group">
+            <span>Email</span>
+            <input
+              class="input"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              formControlName="email">
+          </div>
+          <div class="alert alert-danger"
+               *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').dirty">Lütfen
+            email adresinizi giriniz
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="form-group">
+            <span>Kullanıcı Adı</span>
+            <input
+              class="input"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="kullanıcı adı"
+              formControlName="username">
+          </div>
+          <div class="alert alert-danger"
+               *ngIf="registerForm.get('username').hasError('required') && registerForm.get('username').dirty">Lütfen
+            kullanıcı adını giriniz
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="form-group">
+            <span>Şifre</span>
+            <input
+              class="input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="şifre"
+              formControlName="password">
+          </div>
+          <div class="alert alert-danger"
+               *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').dirty">Lütfen
+            şifrenizi giriniz
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button type="submit" [disabled]="registerForm.invalid" (click)="register()" class="btn btn-success">Kaydol
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- /container -->
+  </div>
+</div>

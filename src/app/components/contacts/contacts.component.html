@@ -1,0 +1,72 @@
+<!-- section -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="section-row">
+          <h3>Hakkımızda</h3>
+          <p [innerHTML]="about?.about"></p>
+        </div>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+        <div class="section-row">
+          <h3>Mesaj Gönder</h3>
+          <form [formGroup]="contactForm">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="form-group">
+                  <span>Email</span>
+                  <input
+                    class="input"
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    formControlName="email"
+                    name="email">
+                </div>
+                <div class="alert alert-danger"
+                     *ngIf="contactForm.get('email').hasError('required') && contactForm.get('email').dirty">Lütfen
+                  email adresinizi giriniz
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="form-group">
+                  <span>Konu</span>
+                  <input
+                    class="input"
+                    type="text"
+                    id="subject"
+                    placeholder="Konu"
+                    formControlName="subject"
+                    name="subject">
+                </div>
+                <div class="alert alert-danger"
+                     *ngIf="contactForm.get('subject').hasError('required') && contactForm.get('subject').dirty">Lütfen
+                  bir konu giriniz
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea
+                    class="input"
+                    name="message"
+                    id="message"
+                    formControlName="message"
+                    placeholder="Mesaj"></textarea>
+                </div>
+                <button type="submit" [disabled]="contactForm.invalid" (click)="sendContact()" class="btn btn-success">
+                  Gönder
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /section -->

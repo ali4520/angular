@@ -1,0 +1,27 @@
+<!-- aside -->
+<div class="col-md-4">
+  <!-- post widget -->
+  <div class="aside-widget">
+    <div class="section-title">
+      <h2>Önerilen İçerikler</h2>
+    </div>
+
+    <div *ngFor="let post of recommented" class="post post-thumb">
+      <a class="post-img" routerLink="/haber/{{post.slug}}"><img [src]="post.img" alt=""></a>
+      <div class="post-body">
+        <div class="post-meta">
+          <a class="post-category cat-3" routerLink="kategori/{{post.categorySlug}}">{{post.categoryName}}</a>
+          <span class="post-date">{{post.createdAt | date:'dd-MM-yyyy'}}</span>
+        </div>
+        <h3 class="post-title"><a routerLink="/haber/{{post.slug}}">{{post.title}}</a></h3>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- /post widget -->
+
+
+
+</div>
+<!-- /aside -->

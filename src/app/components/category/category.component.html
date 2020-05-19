@@ -1,0 +1,58 @@
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2>{{title}}</h2>
+            </div>
+          </div>
+
+          <div class="col-md-12" *ngIf="posts?.length ===0">
+            <div class="alert alert-info" role="alert">
+              <strong>{{title}}</strong> kategorisine ait içerik henüz mevcut değil
+            </div>
+          </div>
+
+
+          <div *ngFor="let item of posts | paginate: {itemsPerPage:perPage, currentPage:p, totalItems: posts?.length} "
+               class="col-md-12">
+            <div class="post post-row">
+              <a class="post-img" routerLink="/haber/{{item.slug}}"><img [src]="item.img" alt=""></a>
+              <div class="post-body">
+                <div class="post-meta">
+                  <a class="post-category cat-2"
+                     routerLink="/kategori/{{item.categorySlug}}">{{item.categoryName}}</a>
+                  <span class="post-date">{{item.createdAt | date:'dd-MM-yyyy'}}</span>
+                </div>
+                <h3 class="post-title"><a routerLink="/haber/{{item.slug}}">{{item.title}}</a></h3>
+                <p>{{item.content | truncateText:150}}</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <div class="section-row center-paginate">
+              <pagination-controls
+                (pageChange)="p=$event"
+                (click)="scrollToTop()"
+                directionLinks="false"
+                previousLabel="Geri"
+                nextLabel="İleri" class="my-pagination">
+              </pagination-controls>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    <app-right-menu></app-right-menu>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>

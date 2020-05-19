@@ -1,0 +1,82 @@
+<!-- section -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- post -->
+      <div *ngFor="let i of slider" class="col-md-6">
+        <div class="post post-thumb">
+          <a class="post-img slider" routerLink="/haber/{{i['slug']}}"><img [src]="i.img"></a>
+          <div class="post-body">
+            <div class="post-meta">
+              <a class="post-category cat-3" routerLink="/kategori/{{i['categorySlug']}}">{{i['categoryName']}}</a>
+              <span class="post-date">{{i['createdAt'] | date:'dd-MM-yyyy'}}</span>
+            </div>
+            <h3 class="post-title"><a routerLink="/haber/{{i['slug']}}">{{i['title']}}</a></h3>
+          </div>
+        </div>
+      </div>
+      <!-- /post -->
+
+      <!-- /post -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /section -->
+
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2>Yayın Akışı</h2>
+            </div>
+          </div>
+
+          <!-- post -->
+          <div
+            *ngFor="let post of homePost | paginate:{itemsPerPage:perPage,currentPage:p,totalItems: homePost?.length}"
+            class="col-md-12">
+            <div class="post post-row">
+              <a class="post-img" routerLink="/haber/{{post.slug}}"><img [src]="post.img" alt=""></a>
+              <div class="post-body">
+                <div class="post-meta">
+                  <a class="post-category cat-4" routerLink="/kategori/{{post.categorySlug}}">{{post.categoryName}}</a>
+                  <span class="post-date">{{post.createdAt | date:'dd-MM-yyyy'}}</span>
+                </div>
+                <h3 class="post-title"><a routerLink="/haber/{{post.slug}}">{{post.title}}</a></h3>
+                <p [innerHTML]="post.content | truncateText:150"></p>
+              </div>
+            </div>
+          </div>
+          <!-- /post -->
+
+
+          <div class="col-md-12">
+            <div class="section-row center-paginate">
+              <pagination-controls
+                (pageChange)="p=$event"
+                (click)="scrollToTop()"
+                directionLinks="false"
+                previousLabel="Geri"
+                nextLabel="İleri" class="my-pagination">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-right-menu></app-right-menu>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+

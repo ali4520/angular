@@ -1,0 +1,79 @@
+<header id="header">
+  <!-- Nav -->
+  <div id="nav">
+    <!-- Main Nav -->
+    <div id="nav-fixed">
+      <div class="container">
+        <!-- logo -->
+        <div class="nav-logo">
+          <a class="logo" routerLink="/anasayfa"><img [src]="settings?.logo"></a>
+        </div>
+        <!-- /logo -->
+
+        <!-- nav -->
+        <ul class="nav-menu nav navbar-nav">
+          <li *ngFor="let category of categories">
+            <a routerLink="/kategori/{{category['slug']}}">{{category.name}}
+            </a>
+          </li>
+        </ul>
+        <!-- /nav -->
+
+        <!-- search & aside toggle -->
+        <div class="nav-btns">
+          <a *ngIf="!checkLogin" routerLink="/giris-yap"><i class="fa fa-user"></i> Giriş
+            Yap</a>
+          <a *ngIf="checkLogin" routerLink="/anasayfa" (click)="logOut()"><i class="fa fa-sign-out"></i> Çıkış Yap</a>
+          <button class="aside-btn"><i class="fa fa-bars"></i></button>
+        </div>
+        <!-- /search & aside toggle -->
+      </div>
+    </div>
+    <!-- /Main Nav -->
+
+    <!-- Aside Nav -->
+    <div id="nav-aside">
+      <!-- nav -->
+      <div class="section-row">
+        <ul class="nav-aside-menu">
+          <li><a routerLink="/anasayfa">Anasayfa</a></li>
+          <li><a routerLink="/iletisim">İletisim</a></li>
+          <li *ngIf="!checkLogin"><a routerLink="/giris-yap">Giriş Yap</a></li>
+          <li *ngIf="!checkLogin"><a routerLink="/kayit-ol">Kayit Ol</a></li>
+        </ul>
+      </div>
+      <!-- /nav -->
+
+      <!-- widget posts -->
+      <div class="section-row">
+        <h3>Kategoriler</h3>
+        <div class="post post-widget">
+          <ul>
+            <li *ngFor="let category of categories">
+              <a routerLink="/kategori/{{category['slug']}}" style="text-decoration: none;">{{category.name}}</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- /widget posts -->
+
+      <!-- social links -->
+      <div class="section-row">
+        <h3>Sosyal Medya</h3>
+        <ul class="nav-aside-social">
+          <li><a href="{{settings?.facebook}}"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="{{settings?.twitter}}"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="{{settings?.instagram}}"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+      </div>
+      <!-- /social links -->
+
+      <!-- aside nav close -->
+      <button class="nav-aside-close"><i class="fa fa-times"></i></button>
+      <!-- /aside nav close -->
+    </div>
+    <!-- Aside Nav -->
+  </div>
+  <!-- /Nav -->
+</header>

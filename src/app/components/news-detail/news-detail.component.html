@@ -1,0 +1,95 @@
+<div id="post-header" class="page-header">
+  <div class="background-img" style="background-image: url({{details?.img}});"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="post-meta">
+          <a class="post-category cat-3" routerLink="/kategori/{{details?.categorySlug}}">{{details?.categoryName}}</a>
+          <span class="post-date">{{details?.createdAt | date:'dd-MM-yyyy'}}</span>
+        </div>
+        <h1>{{details?.title}}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- section -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- Post content -->
+      <div class="col-md-8">
+        <div class="section-row sticky-container">
+          <div class="main-post">
+            <h3>{{details?.title}}</h3>
+            <div [innerHTML]="details?.content"></div>
+          </div>
+          <div class="post-shares sticky-shares">
+            <a class="share-facebook"><i class="fa fa-facebook"></i></a>
+            <a class="share-twitter"><i class="fa fa-twitter"></i></a>
+            <a><i class="fa fa-envelope"></i></a>
+          </div>
+        </div>
+        <!-- comments -->
+        <div class="section-row" *ngIf="comments?.length > 0">
+          <div class="section-title">
+            <h2>Yorumlar</h2>
+          </div>
+
+          <div class="post-comments">
+
+            <!-- comment -->
+            <div class="media" *ngFor="let comment of comments">
+              <div class="media-left">
+                <img class="media-object" src="assets/img/avatar.png" alt="">
+              </div>
+              <div class="media-body">
+                <div class="media-heading">
+                  <h4>{{comment.name}} {{comment.surname}}</h4>
+                  <span class="time">{{comment.createdAt |date:'dd-MM-yyyy HH:mm'}}</span>
+                </div>
+                <p [innerHTML]="comment.comment"></p>
+              </div>
+            </div>
+            <!-- /comment -->
+          </div>
+        </div>
+        <!-- /comments -->
+        <div *ngIf="checkLogin" class="section-row">
+          <div class="section-title">
+            <h2>Yorum Yap</h2>
+          </div>
+          <div class="post-reply">
+            <div class="row">
+              <form #sendForm="ngForm" (ngSubmit)="sendComment(sendForm)">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea
+                      #comment="ngModel"
+                      [(ngModel)]="commentModel.text"
+                      name="comment"
+                      id="comment"
+                      class="input"
+                      placeholder="Yorum giriniz." required></textarea>
+                  </div>
+                  <div *ngIf="comment.invalid && comment.dirty" class="alert alert-info">Lütfen yorumunuzu giriniz.
+                  </div>
+                  <button type="submit" class="btn btn-success" [disabled]="sendForm.invalid">Gönder
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Post content -->
+
+
+      <app-right-menu></app-right-menu>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /section -->
