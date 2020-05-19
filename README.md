@@ -1,27 +1,42 @@
-# Blog
+# Gereksinimler
+Angular CLI -> npm install -g @angular/cli
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+# Kurulum 
+İndirdiğiniz dosyaları bir klasöre toplayın ve bu klasörü masaüstüne atın.
 
-## Development server
+# 1. Adım 
+"src/app/app.module.ts" dosyasını bir kod editörü ile açın ve providers kısmındaki
+apiURL'in userValue değerini "http://siteadresiniz.com/backend/api" şeklinde kendinize uygun olacak şekilde değiştirin.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# 2. Adım
+Bir cmd komut satırı açarak klasöre gidin örneğin kaynak kodları masaüstünde blog isimli bir klasörün içine attıysanız 
+"cd Desktop/Blog" yazın ve enter'a basın.
 
-## Code scaffolding
+# 3. Adım
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+"ng build --prod" yazıp enter'a basın angular cli sizin için projeyi build edicektir.
+Proje dosyaları blog/dist klasörü altına build edilecektir.[FTP ye dist'in içindeki dosyaları yükleceksiniz.]
 
-## Build
+# 4. Adım
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Dosyaları FTP'ye yükledikten sonra anadizine .htaccess isimli dosya oluşturun ve içine aşağıdaki kodları yazın:
 
-## Running unit tests
+RewriteEngine On
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+RewriteRule ^ /index.html
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# 5. Adım
 
-## Running end-to-end tests
+- FTP'de dosyaların kurulu olduğu dizine backend isimli bir klasör oluşturun.
+- backend.zip dosyasının içindekilerin hepsini buraya yükleyin.
+- Bir tane veritabanı oluşturun ve db.sql 'i bu veritabanına import edin.
+- application/config/database.php dosyasını açın ve gerekli alanları doldurun.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+admin paneline siteadresi.com/backend şeklinde ulaşabilirsiniz.
 
-## Further help
+admin email : admin@admin.com
+admin şifre : 123456
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
