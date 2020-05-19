@@ -21,11 +21,11 @@ Proje dosyaları blog/dist klasörü altına build edilecektir.[FTP ye dist'in i
 
 Dosyaları FTP'ye yükledikten sonra anadizine .htaccess isimli dosya oluşturun ve içine aşağıdaki kodları yazın:
 
-RewriteEngine On
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
-RewriteRule ^ - [L]
-RewriteRule ^ /index.html
+- RewriteEngine On
+- RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+- RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+- RewriteRule ^ - [L]
+- RewriteRule ^ /index.html
 
 # 5. Adım
 
