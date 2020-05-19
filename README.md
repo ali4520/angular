@@ -3,6 +3,7 @@ Angular CLI -> npm install -g @angular/cli
 
 # Kurulum 
 İndirdiğiniz dosyaları bir klasöre toplayın ve bu klasörü masaüstüne atın.
+- https://mithaber.com
 
 # 1. Adım 
 "src/app/app.module.ts" dosyasını bir kod editörü ile açın ve providers kısmındaki
